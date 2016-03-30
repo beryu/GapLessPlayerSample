@@ -16,6 +16,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch _ {
+        }
+        
         let url1 = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("1", ofType: "m4a")!)
         let url2 = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("2", ofType: "m4a")!)
         let asset1 = AVURLAsset(URL: url1)
